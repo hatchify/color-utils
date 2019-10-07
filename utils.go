@@ -29,7 +29,9 @@ func decimalToHex(decimal uint8) (hex string) {
 	// Cast as uint64 so that we can pass the value to the formatting func
 	u64 := uint64(decimal)
 	// Format the decimal value (base10) as a hex value (base16) and return
-	return strconv.FormatUint(u64, 16)
+	h := strconv.FormatUint(u64, 16)
+	// In the case of a single digit hex value, prefix with "0"
+	return fmt.Sprintf("%02s", h)
 }
 
 func sanitizeHex(hex string) (sanitized string, err error) {
